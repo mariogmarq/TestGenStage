@@ -18,6 +18,6 @@ defmodule Watcher.Producer do
   def handle_demand(demand, state) when demand > 0 do
     data = read_ram()
 
-    {:noreply, [data | List.duplicate(:null, demand-1)], state}
+    {:noreply, List.duplicate(data, demand), state}
   end
 end
